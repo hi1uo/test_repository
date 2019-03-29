@@ -14,10 +14,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # Turn off the Flask_SQLALc
 app.secret_key = 'jerry' # This needs to be hidden in Production
 api = Api(app)
 
-@app.before_first_request
-def create_tables():
-    db.create_all()
-
 jwt = JWT(app, authenticate, identity_function) # /auth
 
 @jwt.auth_response_handler
